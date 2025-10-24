@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Limitless Apparel - Login</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      :root {
+        --primary: #2563eb;
+        --primary-dark: #1d4ed8;
+        --primary-light: #3b82f6;
+        --success: #10b981;
+        --danger: #ef4444;
+        --gray-50: #f9fafb;
+        --gray-100: #f3f4f6;
+        --gray-200: #e5e7eb;
+        --gray-300: #d1d5db;
+        --gray-600: #4b5563;
+        --gray-700: #374151;
+        --gray-800: #1f2937;
+        --gray-900: #111827;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .login-container {
+        width: 100%;
+        max-width: 400px;
+        background: white;
+        border-radius: 24px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+      }
+
+      .login-header {
+        background: linear-gradient(
+          135deg,
+          var(--primary),
+          var(--primary-dark)
+        );
+        padding: 40px 30px;
+        text-align: center;
+        color: white;
+      }
+
+      .logo {
+        width: 80px;
+        height: 80px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        backdrop-filter: blur(10px);
+      }
+
+      .logo svg {
+        width: 40px;
+        height: 40px;
+      }
+
+      .login-title {
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .login-subtitle {
+        font-size: 15px;
+        opacity: 0.9;
+      }
+
+      .login-body {
+        padding: 30px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-label {
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--gray-700);
+        margin-bottom: 8px;
+      }
+
+      .input-wrapper {
+        position: relative;
+      }
+
+      .input-icon {
+        position: absolute;
+        left: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 20px;
+        color: var(--gray-600);
+      }
+
+      .form-input {
+        width: 100%;
+        height: 50px;
+        padding: 0 16px 0 46px;
+        border: 2px solid var(--gray-200);
+        border-radius: 12px;
+        font-size: 15px;
+        transition: all 0.2s;
+      }
+
+      .form-input:focus {
+        outline: none;
+        border-color: var(--primary);
+        background: var(--gray-50);
+      }
+
+      .form-input::placeholder {
+        color: var(--gray-300);
+      }
+
+      .password-toggle {
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 5px;
+        color: var(--gray-600);
+      }
+
+      .password-toggle:hover {
+        color: var(--primary);
+      }
+
+      .form-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+      }
+
+      .remember-me {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+      }
+
+      .checkbox {
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+        accent-color: var(--primary);
+      }
+
+      .checkbox-label {
+        font-size: 14px;
+        color: var(--gray-700);
+        cursor: pointer;
+      }
+
+      .forgot-password {
+        font-size: 14px;
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .forgot-password:hover {
+        text-decoration: underline;
+      }
+
+      .btn-login {
+        width: 100%;
+        height: 50px;
+        background: linear-gradient(
+          135deg,
+          var(--primary),
+          var(--primary-light)
+        );
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .btn-login:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(37, 99, 235, 0.4);
+      }
+
+      .btn-login:active {
+        transform: translateY(0);
+      }
+
+      .btn-login:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .spinner {
+        width: 20px;
+        height: 20px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-top-color: white;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .alert {
+        padding: 12px 16px;
+        border-radius: 10px;
+        font-size: 14px;
+        margin-bottom: 20px;
+        display: none;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .alert.show {
+        display: flex;
+      }
+
+      .alert-error {
+        background: #fee2e2;
+        color: var(--danger);
+        border: 1px solid #fecaca;
+      }
+
+      .alert-success {
+        background: #d1fae5;
+        color: var(--success);
+        border: 1px solid #a7f3d0;
+      }
+
+      .alert-icon {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+      }
+
+      .divider {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        margin: 24px 0;
+        color: var(--gray-600);
+        font-size: 13px;
+      }
+
+      .divider::before,
+      .divider::after {
+        content: "";
+        flex: 1;
+        border-bottom: 1px solid var(--gray-200);
+      }
+
+      .divider span {
+        padding: 0 12px;
+      }
+
+      .role-selector {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+
+      .role-card {
+        padding: 20px;
+        border: 2px solid var(--gray-200);
+        border-radius: 12px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.2s;
+        background: white;
+      }
+
+      .role-card:hover {
+        border-color: var(--primary);
+        background: var(--gray-50);
+      }
+
+      .role-card.active {
+        border-color: var(--primary);
+        background: linear-gradient(
+          135deg,
+          rgba(37, 99, 235, 0.1),
+          rgba(59, 130, 246, 0.1)
+        );
+      }
+
+      .role-icon {
+        width: 48px;
+        height: 48px;
+        margin: 0 auto 12px;
+        background: var(--gray-100);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .role-card.active .role-icon {
+        background: var(--primary);
+        color: white;
+      }
+
+      .role-name {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--gray-800);
+      }
+
+      .demo-section {
+        background: var(--gray-50);
+        border-radius: 12px;
+        padding: 16px;
+        margin-top: 20px;
+      }
+
+      .demo-title {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--gray-700);
+        margin-bottom: 12px;
+        text-align: center;
+      }
+
+      .demo-credentials {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .demo-credential {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 12px;
+        background: white;
+        border-radius: 8px;
+        font-size: 13px;
+      }
+
+      .demo-label {
+        color: var(--gray-600);
+        font-weight: 500;
+      }
+
+      .demo-value {
+        color: var(--gray-800);
+        font-weight: 600;
+        font-family: monospace;
+      }
+
+      .login-footer {
+        text-align: center;
+        padding: 20px 30px;
+        background: var(--gray-50);
+        font-size: 13px;
+        color: var(--gray-600);
+      }
+
+      .login-footer a {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      /* Responsive */
+      @media (max-width: 480px) {
+        body {
+          padding: 0;
+        }
+
+        .login-container {
+          border-radius: 0;
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .login-body {
+          flex: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="login-header">
+        <div class="logo">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+            />
+          </svg>
+        </div>
+        <h1 class="login-title">LIMITLESS</h1>
+        <p class="login-subtitle">Men's Fashion POS System</p>
+      </div>
+
+      <div class="login-body">
+        <!-- Alert Messages -->
+        <div class="alert alert-error" id="errorAlert">
+          <svg
+            class="alert-icon"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          <span id="errorMessage">Invalid email or password</span>
+        </div>
+
+        <div class="alert alert-success" id="successAlert">
+          <svg
+            class="alert-icon"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          <span id="successMessage">Login successful!</span>
+        </div>
+
+        <!-- Role Selector -->
+        <div class="role-selector">
+          <div class="role-card active" data-role="shopkeeper">
+            <div class="role-icon">
+              <svg
+                width="24"
+                height="24"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                />
+              </svg>
+            </div>
+            <div class="role-name">Shopkeeper</div>
+          </div>
+          <div class="role-card" data-role="manager">
+            <div class="role-icon">
+              <svg
+                width="24"
+                height="24"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                />
+              </svg>
+            </div>
+            <div class="role-name">Manager</div>
+          </div>
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm">
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <div class="input-wrapper">
+              <svg
+                class="input-icon"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
+                />
+              </svg>
+              <input
+                type="email"
+                class="form-input"
+                id="emailInput"
+                placeholder="you@example.com"
+                required
+                autocomplete="email"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Password</label>
+            <div class="input-wrapper">
+              <svg
+                class="input-icon"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                />
+              </svg>
+              <input
+                type="password"
+                class="form-input"
+                id="passwordInput"
+                placeholder="Enter your password"
+                required
+                autocomplete="current-password"
+              />
+              <button type="button" class="password-toggle" id="togglePassword">
+                <svg
+                  width="20"
+                  height="20"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-footer">
+            <label class="remember-me">
+              <input type="checkbox" class="checkbox" id="rememberMe" />
+              <span class="checkbox-label">Remember me</span>
+            </label>
+            <a href="#" class="forgot-password">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="btn-login" id="loginBtn">
+            <span id="btnText">Sign In</span>
+            <svg
+              id="btnArrow"
+              width="20"
+              height="20"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              />
+            </svg>
+            <div class="spinner" id="btnSpinner" style="display: none"></div>
+          </button>
+        </form>
+      </div>
+
+      <div class="login-footer">
+        © 2025 Limitless Apparel. All rights reserved.
+      </div>
+    </div>
+    <script type="module">
+         import { supabase } from './js/supabase-client.js'
+  
+  // Test connection on load
+  window.addEventListener('DOMContentLoaded', async () => {
+    console.log('Testing Supabase connection...')
+    
+    // Simple test query
+    const { data, error } = await supabase
+      .from('users')
+      .select('count')
+      .limit(1)
+    
+    if (error) {
+      console.error('Supabase connection failed:', error)
+    } else {
+      console.log('Supabase connection successful!', data)
+    }
+  })
+      import { authManager } from "./js/auth.js";
+
+      // Role Selection
+      let selectedRole = "shopkeeper";
+
+      document.querySelectorAll(".role-card").forEach((card) => {
+        card.addEventListener("click", function () {
+          document
+            .querySelectorAll(".role-card")
+            .forEach((c) => c.classList.remove("active"));
+          this.classList.add("active");
+          selectedRole = this.dataset.role;
+          console.log("Role selected:", selectedRole);
+        });
+      });
+
+      // Password Toggle (keep your existing code)
+      const togglePassword = document.getElementById("togglePassword");
+      const passwordInput = document.getElementById("passwordInput");
+
+      togglePassword.addEventListener("click", function () {
+        const type = passwordInput.type === "password" ? "text" : "password";
+        passwordInput.type = type;
+        // ... keep your existing icon update code
+      });
+
+      // Alert Functions (keep your existing code)
+      function showAlert(type, message) {
+        const errorAlert = document.getElementById("errorAlert");
+        const successAlert = document.getElementById("successAlert");
+
+        errorAlert.classList.remove("show");
+        successAlert.classList.remove("show");
+
+        if (type === "error") {
+          document.getElementById("errorMessage").textContent = message;
+          errorAlert.classList.add("show");
+        } else {
+          document.getElementById("successMessage").textContent = message;
+          successAlert.classList.add("show");
+        }
+
+        setTimeout(() => {
+          errorAlert.classList.remove("show");
+          successAlert.classList.remove("show");
+        }, 5000);
+      }
+
+      // Form Submission with Supabase - DEBUG VERSION
+      const loginForm = document.getElementById("loginForm");
+      const loginBtn = document.getElementById("loginBtn");
+      const btnText = document.getElementById("btnText");
+      const btnArrow = document.getElementById("btnArrow");
+      const btnSpinner = document.getElementById("btnSpinner");
+
+      loginForm.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        console.log("Form submitted");
+
+        const email = document.getElementById("emailInput").value;
+        const password = document.getElementById("passwordInput").value;
+        const rememberMe = document.getElementById("rememberMe").checked;
+
+        console.log("Login attempt:", { email, selectedRole, rememberMe });
+
+        // Show loading state
+        loginBtn.disabled = true;
+        btnText.textContent = "Signing in...";
+        btnArrow.style.display = "none";
+        btnSpinner.style.display = "block";
+
+        try {
+          console.log("Calling authManager.login...");
+          const result = await authManager.login(email, password, selectedRole);
+          console.log("Login result:", result);
+
+          if (result.success) {
+            console.log("Login successful, showing success message");
+            showAlert("success", "Login successful! Redirecting...");
+
+            // Store remember me preference
+            if (rememberMe) {
+              localStorage.setItem("remember_me", "true");
+            } else {
+              sessionStorage.setItem("session_only", "true");
+            }
+
+            console.log("Starting redirect timer...");
+            // Redirect based on role
+            setTimeout(() => {
+              console.log("Redirect timer fired. Role:", selectedRole);
+              if (selectedRole === "manager") {
+                console.log("Redirecting to admin.html");
+                window.location.href = "admin.html";
+              } else {
+                console.log("Redirecting to pos.html");
+                window.location.href = "pos.html";
+              }
+            }, 1500);
+          } else {
+            console.log("Login failed:", result.error);
+            showAlert("error", result.error || "Login failed");
+            resetButton();
+          }
+        } catch (error) {
+          console.error("Login catch error:", error);
+          showAlert("error", error.message || "An error occurred during login");
+          resetButton();
+        }
+      });
+
+      function resetButton() {
+        loginBtn.disabled = false;
+        btnText.textContent = "Sign In";
+        btnArrow.style.display = "block";
+        btnSpinner.style.display = "none";
+      }
+
+      // Check for existing session on page load
+      window.addEventListener("DOMContentLoaded", async function () {
+        console.log("DOM loaded, checking for existing session...");
+        const hasSession = await authManager.init();
+        console.log("Session check result:", hasSession);
+
+        if (hasSession) {
+          console.log("Has session, getting user role...");
+          const userRole = await authManager.getCurrentUserRole();
+          console.log("User role:", userRole);
+
+          if (userRole) {
+            console.log("User already logged in, redirecting...");
+            if (userRole === "manager") {
+              window.location.href = "admin.html";
+            } else {
+              window.location.href = "pos.html";
+            }
+          }
+        } else {
+          console.log("No existing session found");
+        }
+      });
+    </script>
+  </body>
+</html>
