@@ -1,0 +1,147 @@
+/* css/main.css - Add these styles */
+:root {
+    /* Category Colors - same as in categoryConfig */
+    --category-shirts: #3B82F6;
+    --category-shirts-light: #DBEAFE;
+    --category-blazers: #7C3AED;
+    --category-blazers-light: #EDE9FE;
+    --category-jeans: #059669;
+    --category-jeans-light: #D1FAE5;
+    --category-trousers: #DC2626;
+    --category-trousers-light: #FEE2E2;
+    --category-shoes: #D97706;
+    --category-shoes-light: #FEF3C7;
+    --category-accessories: #6B7280;
+    --category-accessories-light: #F3F4F6;
+}
+
+/* Product Card Base Styles */
+.product-card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gray-200);
+}
+
+/* Category-specific styles */
+.product-card[data-category="Shirts"]::before {
+    background: var(--category-shirts);
+}
+.product-card[data-category="Blazers"]::before {
+    background: var(--category-blazers);
+}
+.product-card[data-category="Jeans"]::before {
+    background: var(--category-jeans);
+}
+.product-card[data-category="Trousers"]::before {
+    background: var(--category-trousers);
+}
+.product-card[data-category="Shoes"]::before {
+    background: var(--category-shoes);
+}
+.product-card[data-category="Accessories"]::before {
+    background: var(--category-accessories);
+}
+
+/* Hover effects with category colors */
+.product-card[data-category="Shirts"]:hover {
+    border-color: var(--category-shirts);
+    background: var(--category-shirts-light);
+}
+.product-card[data-category="Blazers"]:hover {
+    border-color: var(--category-blazers);
+    background: var(--category-blazers-light);
+}
+.product-card[data-category="Jeans"]:hover {
+    border-color: var(--category-jeans);
+    background: var(--category-jeans-light);
+}
+.product-card[data-category="Trousers"]:hover {
+    border-color: var(--category-trousers);
+    background: var(--category-trousers-light);
+}
+.product-card[data-category="Shoes"]:hover {
+    border-color: var(--category-shoes);
+    background: var(--category-shoes-light);
+}
+.product-card[data-category="Accessories"]:hover {
+    border-color: var(--category-accessories);
+    background: var(--category-accessories-light);
+}
+
+/* Category Icon Styles */
+/* Category Icon Container */
+.category-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    overflow: hidden;
+}
+
+/* SVG Icon Styling */
+.category-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+
+/* Fallback Icon Styling */
+.category-icon-fallback {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 12px;
+}
+
+/* Category-specific colors - applied to parent container */
+[data-category="Shirts"] .category-icon {
+    background: var(--category-shirts-light, #DBEAFE);
+    color: var(--category-shirts, #3B82F6);
+}
+
+[data-category="Blazers"] .category-icon {
+    background: var(--category-blazers-light, #EDE9FE);
+    color: var(--category-blazers, #7C3AED);
+}
+
+[data-category="Jeans"] .category-icon {
+    background: var(--category-jeans-light, #D1FAE5);
+    color: var(--category-jeans, #059669);
+}
+
+[data-category="Trousers"] .category-icon {
+    background: var(--category-trousers-light, #FEE2E2);
+    color: var(--category-trousers, #DC2626);
+}
+
+[data-category="Shoes"] .category-icon {
+    background: var(--category-shoes-light, #FEF3C7);
+    color: var(--category-shoes, #D97706);
+}
+
+[data-category="Accessories"] .category-icon {
+    background: var(--category-accessories-light, #F3F4F6);
+    color: var(--category-accessories, #6B7280);
+}
