@@ -153,17 +153,20 @@ export class DatabaseManager {
     // Delete product (soft delete)
     async deleteProduct(productId) {
         try {
-            const { error } = await this.supabase
+            // Use the module-level supabase (not this.supabase)
+            // Soft delete: mark is_active = false so we keep history
+            const { data, error } = await supabase
                 .from('products')
-                .delete()
-                .eq('id', productId);
+                .update({ is_active: false, updated_at: new Date().toISOString() })
+                .eq('id', productId)
+                .select()
 
-            if (error) throw error;
+            if (error) throw error
 
-            return { success: true };
+            return { success: true, data: data[0] }
         } catch (error) {
-            console.error('Error deleting product:', error);
-            return { success: false, error: error.message };
+            console.error('Error deleting product:', error)
+            return { success: false, error: error.message }
         }
     }
 

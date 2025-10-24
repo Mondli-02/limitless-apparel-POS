@@ -637,24 +637,24 @@
       </div>
     </div>
     <script type="module">
-         import { supabase } from './js/supabase-client.js'
-  
-  // Test connection on load
-  window.addEventListener('DOMContentLoaded', async () => {
-    console.log('Testing Supabase connection...')
-    
-    // Simple test query
-    const { data, error } = await supabase
-      .from('users')
-      .select('count')
-      .limit(1)
-    
-    if (error) {
-      console.error('Supabase connection failed:', error)
-    } else {
-      console.log('Supabase connection successful!', data)
-    }
-  })
+      import { supabase } from "./js/supabase-client.js";
+
+      // Test connection on load
+      window.addEventListener("DOMContentLoaded", async () => {
+        console.log("Testing Supabase connection...");
+
+        // Simple test query
+        const { data, error } = await supabase
+          .from("users")
+          .select("count")
+          .limit(1);
+
+        if (error) {
+          console.error("Supabase connection failed:", error);
+        } else {
+          console.log("Supabase connection successful!", data);
+        }
+      });
       import { authManager } from "./js/auth.js";
 
       // Role Selection

@@ -8,13 +8,13 @@
     />
     <title>Limitless Admin</title>
     <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/admin2.css" />
+    <link rel="stylesheet" href="css/admin.css" />
   </head>
   <body>
     <!-- Header -->
     <div class="header">
       <div class="header-left">
-        <div class="logo">LIMITLESS</div>
+        <div class="logo">Limitless Apparel</div>
         <span class="role-badge">MANAGER</span>
       </div>
       <button class="logout-btn">Logout</button>
@@ -442,25 +442,37 @@
     </div>
 
     <!-- Confirm Delete Modal -->
-<div class="modal-overlay" id="confirmDeleteModal">
-  <div class="confirm-modal">
-    <div class="confirm-icon">
-      <svg width="30" height="30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M13 16h-1v-4h-1m1-4h.01M12 19a7 7 0 100-14 7 7 0 000 14z" />
-      </svg>
+    <div class="modal-overlay" id="confirmDeleteModal">
+      <div class="confirm-modal">
+        <div class="confirm-icon">
+          <svg
+            width="30"
+            height="30"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13 16h-1v-4h-1m1-4h.01M12 19a7 7 0 100-14 7 7 0 000 14z"
+            />
+          </svg>
+        </div>
+        <div class="confirm-text">
+          <h3>Delete Product</h3>
+          <p>
+            Are you sure you want to delete this product? This action cannot be
+            undone.
+          </p>
+        </div>
+        <div class="confirm-actions">
+          <button class="btn-secondary" id="cancelDeleteBtn">Cancel</button>
+          <button class="btn-danger" id="confirmDeleteBtn">Delete</button>
+        </div>
+      </div>
     </div>
-    <div class="confirm-text">
-      <h3>Delete Product</h3>
-      <p>Are you sure you want to delete this product? This action cannot be undone.</p>
-    </div>
-    <div class="confirm-actions">
-      <button class="btn-secondary" id="cancelDeleteBtn">Cancel</button>
-      <button class="btn-danger" id="confirmDeleteBtn">Delete</button>
-    </div>
-  </div>
-</div>
-
 
     <!-- Import admin.js -->
     <script type="module" src="js/admin.js"></script>

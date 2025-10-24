@@ -1,147 +1,318 @@
 /* css/main.css - Add these styles */
+
+/* Import unique font combination from Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap");
+
 :root {
-    /* Category Colors - same as in categoryConfig */
-    --category-shirts: #3B82F6;
-    --category-shirts-light: #DBEAFE;
-    --category-blazers: #7C3AED;
-    --category-blazers-light: #EDE9FE;
-    --category-jeans: #059669;
-    --category-jeans-light: #D1FAE5;
-    --category-trousers: #DC2626;
-    --category-trousers-light: #FEE2E2;
-    --category-shoes: #D97706;
-    --category-shoes-light: #FEF3C7;
-    --category-accessories: #6B7280;
-    --category-accessories-light: #F3F4F6;
+  /* Category Colors - same as in categoryConfig */
+  --category-shirts: #3b82f6;
+  --category-shirts-light: #dbeafe;
+  --category-blazers: #7c3aed;
+  --category-blazers-light: #ede9fe;
+  --category-jeans: #059669;
+  --category-jeans-light: #d1fae5;
+  --category-trousers: #dc2626;
+  --category-trousers-light: #fee2e2;
+  --category-shoes: #d97706;
+  --category-shoes-light: #fef3c7;
+  --category-accessories: #6b7280;
+  --category-accessories-light: #f3f4f6;
+
+  /* Font Variables */
+  --font-heading: "Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Apply fonts to entire system */
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings and important text use Space Grotesk */
+.header .logo,
+.page-title,
+.section-title,
+.modal-title,
+.stat-value,
+.stat-label,
+.inventory-name,
+.sale-id,
+.sale-footer,
+.product-name,
+.product-price,
+.profile-name,
+.cart-title,
+.cart-total,
+.btn,
+.nav-label,
+.filter-btn,
+.category-btn {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Special styling for logo */
+.header .logo {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-size: 20px;
+}
+
+/* Large numbers and important values */
+.stat-value {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Product cards with better typography */
+.product-card {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.product-name {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.product-price {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* Buttons with better typography */
+.btn {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  font-size: 14px;
+}
+
+/* Navigation with improved readability */
+.nav-label {
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* Form elements */
+.form-input,
+.form-select,
+.search-input {
+  font-family: var(--font-body);
+  font-weight: 400;
+}
+
+/* Badges and small text */
+.role-badge,
+.inventory-badge,
+.sale-payment-badge,
+.badge-success,
+.badge-warning,
+.badge-danger {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* Category filters */
+.category-btn {
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* Stats cards with better number presentation */
+.stat-card .stat-value {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.stat-card .stat-label {
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* Inventory items */
+.inventory-name {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.inventory-meta {
+  font-family: var(--font-body);
+  font-weight: 400;
+}
+
+/* Sales information */
+.sale-id {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.sale-date {
+  font-family: var(--font-body);
+  font-weight: 400;
+}
+
+/* Profile section */
+.profile-name {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.profile-role {
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+/* Modal titles */
+.modal-title {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Cart items */
+.cart-item-name {
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+.cart-item-price {
+  font-family: var(--font-body);
+  font-weight: 400;
 }
 
 /* Product Card Base Styles */
-.product-card {
-    background: white;
-    border-radius: 12px;
-    padding: 16px;
-    border: 2px solid transparent;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-}
-
 .product-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: var(--gray-200);
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gray-200);
 }
 
 /* Category-specific styles */
 .product-card[data-category="Shirts"]::before {
-    background: var(--category-shirts);
+  background: var(--category-shirts);
 }
 .product-card[data-category="Blazers"]::before {
-    background: var(--category-blazers);
+  background: var(--category-blazers);
 }
 .product-card[data-category="Jeans"]::before {
-    background: var(--category-jeans);
+  background: var(--category-jeans);
 }
 .product-card[data-category="Trousers"]::before {
-    background: var(--category-trousers);
+  background: var(--category-trousers);
 }
 .product-card[data-category="Shoes"]::before {
-    background: var(--category-shoes);
+  background: var(--category-shoes);
 }
 .product-card[data-category="Accessories"]::before {
-    background: var(--category-accessories);
+  background: var(--category-accessories);
 }
 
 /* Hover effects with category colors */
 .product-card[data-category="Shirts"]:hover {
-    border-color: var(--category-shirts);
-    background: var(--category-shirts-light);
+  border-color: var(--category-shirts);
+  background: var(--category-shirts-light);
 }
 .product-card[data-category="Blazers"]:hover {
-    border-color: var(--category-blazers);
-    background: var(--category-blazers-light);
+  border-color: var(--category-blazers);
+  background: var(--category-blazers-light);
 }
 .product-card[data-category="Jeans"]:hover {
-    border-color: var(--category-jeans);
-    background: var(--category-jeans-light);
+  border-color: var(--category-jeans);
+  background: var(--category-jeans-light);
 }
 .product-card[data-category="Trousers"]:hover {
-    border-color: var(--category-trousers);
-    background: var(--category-trousers-light);
+  border-color: var(--category-trousers);
+  background: var(--category-trousers-light);
 }
 .product-card[data-category="Shoes"]:hover {
-    border-color: var(--category-shoes);
-    background: var(--category-shoes-light);
+  border-color: var(--category-shoes);
+  background: var(--category-shoes-light);
 }
 .product-card[data-category="Accessories"]:hover {
-    border-color: var(--category-accessories);
-    background: var(--category-accessories-light);
+  border-color: var(--category-accessories);
+  background: var(--category-accessories-light);
 }
 
 /* Category Icon Styles */
 /* Category Icon Container */
 .category-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 12px;
-    overflow: hidden;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  overflow: hidden;
 }
 
 /* SVG Icon Styling */
 .category-icon svg {
-    width: 24px;
-    height: 24px;
-    fill: currentColor;
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
 }
 
 /* Fallback Icon Styling */
 .category-icon-fallback {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 16px;
-    border-radius: 12px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 12px;
+  font-family: var(--font-heading);
 }
 
 /* Category-specific colors - applied to parent container */
 [data-category="Shirts"] .category-icon {
-    background: var(--category-shirts-light, #DBEAFE);
-    color: var(--category-shirts, #3B82F6);
+  background: var(--category-shirts-light, #dbeafe);
+  color: var(--category-shirts, #3b82f6);
 }
 
 [data-category="Blazers"] .category-icon {
-    background: var(--category-blazers-light, #EDE9FE);
-    color: var(--category-blazers, #7C3AED);
+  background: var(--category-blazers-light, #ede9fe);
+  color: var(--category-blazers, #7c3aed);
 }
 
 [data-category="Jeans"] .category-icon {
-    background: var(--category-jeans-light, #D1FAE5);
-    color: var(--category-jeans, #059669);
+  background: var(--category-jeans-light, #d1fae5);
+  color: var(--category-jeans, #059669);
 }
 
 [data-category="Trousers"] .category-icon {
-    background: var(--category-trousers-light, #FEE2E2);
-    color: var(--category-trousers, #DC2626);
+  background: var(--category-trousers-light, #fee2e2);
+  color: var(--category-trousers, #dc2626);
 }
 
 [data-category="Shoes"] .category-icon {
-    background: var(--category-shoes-light, #FEF3C7);
-    color: var(--category-shoes, #D97706);
+  background: var(--category-shoes-light, #fef3c7);
+  color: var(--category-shoes, #d97706);
 }
 
 [data-category="Accessories"] .category-icon {
-    background: var(--category-accessories-light, #F3F4F6);
-    color: var(--category-accessories, #6B7280);
+  background: var(--category-accessories-light, #f3f4f6);
+  color: var(--category-accessories, #6b7280);
 }
