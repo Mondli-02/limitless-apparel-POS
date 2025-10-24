@@ -48,7 +48,7 @@ body {
 .logo {
   font-size: 20px;
   font-weight: 700;
-  color: var(--primary);
+  color: black; /* Same color as above in RGB */
   letter-spacing: -0.5px;
 }
 
