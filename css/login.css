@@ -87,9 +87,14 @@ body {
 }
 
 .login-subtitle {
-  font-size: 15px;
-  opacity: 0.9;
+  font-size: 14px;
+  font-weight: bolder;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.85;
+  color: white;
 }
+
 
 .login-body {
   padding: 30px;
