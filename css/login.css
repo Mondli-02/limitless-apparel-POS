@@ -135,6 +135,7 @@ body {
   outline: none;
   border-color: var(--primary);
   background: var(--gray-50);
+  box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.15);
 }
 
 .form-input::placeholder {
@@ -184,17 +185,6 @@ body {
   cursor: pointer;
 }
 
-.forgot-password {
-  font-size: 14px;
-  color: var(--primary);
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.forgot-password:hover {
-  text-decoration: underline;
-}
-
 .btn-login {
   width: 100%;
   height: 50px;
@@ -214,7 +204,7 @@ body {
 
 .btn-login:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.4);
+  box-shadow: 0 10px 30px rgba(229, 9, 20, 0.4);
 }
 
 .btn-login:active {
@@ -320,8 +310,8 @@ body {
   border-color: var(--primary);
   background: linear-gradient(
     135deg,
-    rgba(37, 99, 235, 0.1),
-    rgba(59, 130, 246, 0.1)
+    rgba(229, 9, 20, 0.08),
+    rgba(176, 0, 18, 0.08)
   );
 }
 
@@ -392,8 +382,8 @@ body {
 .login-footer {
   text-align: center;
   padding: 20px 30px;
-  background: whitesmoke;
-  color: black;
+  background: #f9f9f9;
+  color: #111;
   font-size: 13px;
 }
 
