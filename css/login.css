@@ -1,6 +1,22 @@
 /* Import unique font combination from Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap");
 
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--gray-100);
+  min-height: 100vh;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -33,6 +49,7 @@
   border-radius: 24px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   overflow: hidden;
+  margin: 0 auto;
 }
 
 .login-header {
@@ -393,9 +410,7 @@
 
   .login-container {
     border-radius: 0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    max-width: 100%;
   }
 
   .login-body {
