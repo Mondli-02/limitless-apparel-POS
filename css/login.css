@@ -32,7 +32,7 @@ body {
   --primary-light: #ff4d5a;
   --success: #10b981;
   --danger: #e50914;
-  --gray-50: #f9fafb;
+  --gray-50: #000000;
   --gray-100: #f3f4f6;
   --gray-200: #e5e7eb;
   --gray-300: #d1d5db;
@@ -198,7 +198,7 @@ body {
 .btn-login {
   width: 100%;
   height: 50px;
-  background: linear-gradient(135deg, #e50914, #ff4d5a);
+  background: linear-gradient(140deg, #e50914, black);
   color: white;
   border: none;
   border-radius: 12px;
@@ -392,8 +392,8 @@ body {
 .login-footer {
   text-align: center;
   padding: 20px 30px;
-  background: #111111;
-  color: #ffffff;
+  background: whitesmoke;
+  color: black;
   font-size: 13px;
 }
 
